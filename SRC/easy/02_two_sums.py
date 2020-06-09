@@ -4,10 +4,14 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        map = {}
         for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if (nums[i] + nums[j]) == target:
-                    return [i, j]
+            if map.get(target - nums[i]) is not None:
+                first_index = map[target - nums[i]]
+                second_index = i
+                return [first_index, second_index]
+            else:
+                map[nums[i]] = i
 
 
 if __name__ == "__main__":
@@ -15,3 +19,5 @@ if __name__ == "__main__":
     target = 6
     solution = Solution()
     print(solution.twoSum(nums, target))
+
+# 50:28
