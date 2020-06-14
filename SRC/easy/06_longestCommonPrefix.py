@@ -27,7 +27,7 @@ class Solution:
             if flag:
                 result += cur
                 print("result: ", result)
-        return result
+        return result  # This return solves the strs3 issue.
 
 
 if __name__ == "__main__":
