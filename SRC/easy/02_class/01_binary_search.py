@@ -5,14 +5,16 @@ def binary_search(sorted_list, number, debug=False):
     min = 0
     max = len(sorted_list) - 1
     result = -1
+    count = 0
     # Less than and equal 2 is important
     while min <= max:
         mid = (min + max) // 2
+        count += 1
         if debug:
             print(min, max, mid, sorted_list[min], sorted_list[max], sorted_list[mid])
         if sorted_list[mid] == number:
             if debug:
-                print("FOUND::: ", mid)
+                print("FOUND::: ", mid, " count: ", count)
             result = mid
             break
         if sorted_list[mid] < number:
@@ -51,7 +53,7 @@ if __name__ == "__main__":
     89,
     97,
 ]
-    number = 73
+    number = 67
 
     index = binary_search(primes, number, debug=True)
     print(index, primes[index])
