@@ -39,7 +39,7 @@ if __name__ == "__main__":
         89,
         97,
     ]
-    number = 67
+    number = 97
     left = 0
     right = len(primes)
     index = binary_search_recur(primes, number, left, right, debug=False)
