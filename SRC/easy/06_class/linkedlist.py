@@ -32,6 +32,33 @@ class LinkedList(object):
 
         last.next = new_node
 
+    def insertAfterIndex(self, index, value):
+        if index < 0:
+            return
+        # create new node
+        new_node = Node(value)
+        prev = None
+        curr = self.head
+        for _i in range(index + 1):
+            prev = curr
+            curr = curr.next
+        if prev:
+            prev.next = new_node
+            new_node.next = curr
+
+    def insertAfterValue(self, value_after, value):
+        curr = self.head
+
+        while curr is not None:
+            if curr.value == value_after:
+                break
+            curr = curr.next
+        else:
+            return
+        new_node = Node(value)
+        new_node.next = curr.next
+        curr.next = new_node
+
     # https://stackoverflow.com/questions/28269643/python-unordered-listwith-nodes-str-method
     def __str__(self):
         temp = self.head
@@ -61,4 +88,20 @@ if __name__ == "__main__":
     linkedList.push(0)
     print(str(linkedList))
     linkedList.append(4)
+    print(str(linkedList))
+    linkedList.insertAfterIndex(2, 2.5)
+    print(str(linkedList))
+    linkedList.insertAfterIndex(1, 1.5)
+    print(str(linkedList))
+    linkedList.insertAfterIndex(-1, 0.5)
+    print(str(linkedList))
+    linkedList.insertAfterIndex(6, 4.5)
+    print(str(linkedList))
+    linkedList.insertAfterValue(1.5, 1.75)
+    print(str(linkedList))
+    linkedList.insertAfterValue(0, 0.25)
+    print(str(linkedList))
+    linkedList = LinkedList(None)
+    print(str(linkedList))
+    linkedList.insertAfterValue(0, 0.25)
     print(str(linkedList))
