@@ -19,6 +19,19 @@ class LinkedList(object):
             curr = next
         self.head = prev
 
+    def reverse_recursive(self, head):
+        # Base Condition
+        if head is None or head.next is None:
+            return head
+
+        print(head.value)
+        rest = self.reverse_recursive(head.next)
+
+        head.next.next = head
+        head.next = None
+
+        return rest
+
     # https://stackoverflow.com/questions/28269643/python-unordered-listwith-nodes-str-method
     def __str__(self):
         temp = self.head
@@ -47,3 +60,18 @@ if __name__ == "__main__":
     print(str(linkedList))
     linkedList.reverse_loop()
     print(str(linkedList))
+    # Reverse a Empty List
+    linkedList = LinkedList(None)
+    print(str(linkedList))
+    linkedList.reverse_loop()
+    print(str(linkedList))
+    n1 = Node(1)
+    n2 = Node(2)
+    n1.next = n2
+    n3 = Node(3)
+    n2.next = n3
+    linkedList = LinkedList(n1)
+    print(str(linkedList))
+    linkedList.head = linkedList.reverse_recursive(linkedList.head)
+    print(str(linkedList))
+# 34:00
