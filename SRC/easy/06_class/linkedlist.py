@@ -59,6 +59,27 @@ class LinkedList(object):
         new_node.next = curr.next
         curr.next = new_node
 
+    def deleteNode(self, key):
+        temp = self.head
+
+        if temp is not None:
+            if temp.value == key:
+                self.head = temp.next
+                temp = None
+                return
+
+        while temp is not None:
+            if temp.value == key:
+                break
+            prev = temp
+            temp = temp.next
+
+        if temp is None:
+            return
+
+        prev.next = temp.next
+        temp = None
+
     # https://stackoverflow.com/questions/28269643/python-unordered-listwith-nodes-str-method
     def __str__(self):
         temp = self.head
@@ -101,7 +122,9 @@ if __name__ == "__main__":
     print(str(linkedList))
     linkedList.insertAfterValue(0, 0.25)
     print(str(linkedList))
-    linkedList = LinkedList(None)
+    linkedList.deleteNode(100)
     print(str(linkedList))
-    linkedList.insertAfterValue(0, 0.25)
-    print(str(linkedList))
+    # linkedList = LinkedList(None)
+    # print(str(linkedList))
+    # linkedList.insertAfterValue(0, 0.25)
+    # print(str(linkedList))
