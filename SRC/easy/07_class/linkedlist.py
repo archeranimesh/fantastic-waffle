@@ -54,6 +54,25 @@ class LinkedList(object):
             temp = temp.next
         return (False, None)
 
+    def remove_loop(self):
+        slow_p = self.head
+        fast_p = self.head
+
+        slow_p = slow_p.next
+        fast_p = fast_p.next.next
+        while slow_p != fast_p:
+            slow_p = slow_p.next
+            fast_p = fast_p.next.next
+
+        p3 = self.head
+        p4 = slow_p
+
+        while p3.next != p4.next:
+            p3 = p3.next
+            p4 = p4.next
+
+        p4.next = None
+
     # https://stackoverflow.com/questions/28269643/python-unordered-listwith-nodes-str-method
     def __str__(self):
         temp = self.head
@@ -111,4 +130,7 @@ if __name__ == "__main__":
     linkedList = LinkedList(n1)
     # print(linkedList.detect_loop())
     print(linkedList.detect_loop_set())
-# 34:00
+    linkedList.remove_loop()
+    print("After remove loop")
+    print(str(linkedList))
+# 1:01
