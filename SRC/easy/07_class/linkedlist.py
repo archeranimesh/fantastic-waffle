@@ -133,4 +133,3 @@ if __name__ == "__main__":
     linkedList.remove_loop()
     print("After remove loop")
     print(str(linkedList))
-# 1:01
